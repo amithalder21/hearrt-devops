@@ -1,0 +1,119 @@
+format_version: 10
+
+pipelines:
+  # ==========================================
+  # PIPELINE 1: DEV ENVIRONMENT
+  # ==========================================
+  Deploy_Backend_Dev:
+    group: Backend_Deployments
+    materials:
+      devops_repo:
+        git: https://github.com/amithalder21/hearrt-devops.git
+        branch: main
+    environment_variables:
+      HOST_PORT: "4000"
+      DEPLOY_ENV: "dev"
+      GITHUB_USERNAME: "Hearrt-Companion-App"
+      BACKEND_VERSION: "1.0.0"
+    # Note: Secure variables must be encrypted by GoCD first. 
+    # You will use the GoCD UI to encrypt your raw values and paste the cipher text here.
+    secure_variables:
+      ENV_FILE_CONTENTS: "AES:..."
+      GHCR_PAT: "AES:..."
+    stages:
+      - Dev_Environment:
+          jobs:
+            Deploy_Docker_Containers:
+              tasks:
+                - exec:
+                    command: /bin/bash
+                    arguments:
+                      - -c
+                      - echo "$ENV_FILE_CONTENTS" > .env
+                - exec:
+                    command: /bin/bash
+                    arguments:
+                      - -c
+                      - echo "$GHCR_PAT" | docker login ghcr.io -u "$GITHUB_USERNAME" --password-stdin
+                - exec:
+                    command: docker
+                    arguments:
+                      - compose
+                      - -p
+                      - dev
+                      - -f
+                      - backend-compose.yml
+                      - pull
+                - exec:
+                    command: docker
+                    arguments:
+                      - compose
+                      - -p
+                      - dev
+                      - -f
+                      - backend-compose.yml
+                      - up
+                      - -d
+
+  # ==========================================
+  # PIPELINE 2: TEST ENVIRONMENT (PROMOTION)
+  # ==========================================
+  Deploy_Backend_Test:
+    group: Backend_Deployments
+    materials:
+      # This is the magic! Instead of pulling from Git, this pipeline takes the 
+      # EXACT output of the Dev pipeline, guaranteeing the versions match perfectly.
+      upstream_pipeline:
+        pipeline: Deploy_Backend_Dev
+        stage: Dev_Environment
+      devops_repo:
+        git: https://github.com/amithalder21/hearrt-devops.git
+        branch: main
+    environment_variables:
+      # We change the port and env tag to avoid collisions on your VM
+      HOST_PORT: "4001"
+      DEPLOY_ENV: "test"
+      GITHUB_USERNAME: "Hearrt-Companion-App"
+      # Notice we DO NOT define BACKEND_VERSION here! 
+      # It is passed down automatically from the upstream Dev pipeline.
+    secure_variables:
+      # This is your completely isolated Test Database credentials
+      ENV_FILE_CONTENTS: "AES:..."
+      GHCR_PAT: "AES:..."
+    stages:
+      - Test_Environment:
+          # This sets the trigger to MANUAL approval by the Release Manager
+          approval:
+            type: manual
+          jobs:
+            Deploy_Docker_Containers:
+              tasks:
+                - exec:
+                    command: /bin/bash
+                    arguments:
+                      - -c
+                      - echo "$ENV_FILE_CONTENTS" > .env
+                - exec:
+                    command: /bin/bash
+                    arguments:
+                      - -c
+                      - echo "$GHCR_PAT" | docker login ghcr.io -u "$GITHUB_USERNAME" --password-stdin
+                - exec:
+                    command: docker
+                    arguments:
+                      - compose
+                      - -p
+                      - test
+                      - -f
+                      - backend-compose.yml
+                      - pull
+                - exec:
+                    command: docker
+                    arguments:
+                      - compose
+                      - -p
+                      - test
+                      - -f
+                      - backend-compose.yml
+                      - up
+                      - -d
