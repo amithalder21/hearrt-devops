@@ -1,0 +1,24 @@
+version: '3.8'
+
+services:
+  postgres:
+    image: pgvector/pgvector:pg16
+    container_name: hearrt_postgres
+    restart: always
+    environment:
+      POSTGRES_USER: ${POSTGRES_USER:-hearrt_app}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-postgres}
+      POSTGRES_DB: ${POSTGRES_DB:-hearrt}
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    networks:
+      - hearrt_network
+
+volumes:
+  postgres_data:
+
+networks:
+  hearrt_network:
+    external: true

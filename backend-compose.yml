@@ -1,0 +1,17 @@
+version: '3.8'
+
+services:
+  backend:
+    image: ghcr.io/${GITHUB_USERNAME}/hearrt-backend:${BACKEND_VERSION:-latest}
+    container_name: hearrt_backend
+    restart: always
+    env_file:
+      - .env
+    ports:
+      - "4000:8080"
+    networks:
+      - hearrt_network
+
+networks:
+  hearrt_network:
+    external: true
