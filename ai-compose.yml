@@ -4,8 +4,38 @@ services:
   ai-service:
     image: ghcr.io/${GITHUB_USERNAME}/hearrt-ai:${AI_VERSION:-latest}
     restart: always
-    env_file:
-      - .env
+    environment:
+      - NODE_ENV
+      - JWT_SECRET
+      - REFRESH_TOKEN_SECRET
+      - ADMIN_JWT_SECRET
+      - CONTENT_ENCRYPTION_KEY
+      - ACCESS_TOKEN_EXPIRES
+      - REFRESH_TOKEN_EXPIRES
+      - ADMIN_SESSION_EXPIRES
+      - ADMIN_SESSION_ABSOLUTE_MAX_HOURS
+      - ADMIN_PENDING_2FA_EXPIRES
+      - ADMIN_GOOGLE_CLIENT_ID
+      - GOOGLE_CLIENT_ID
+      - DATABASE_URL
+      - ADMIN_DEV_LOGIN_ENABLED
+      - CORS_ORIGINS
+      - OPENAI_API_KEY
+      - OPENAI_AVATAR_API_KEY
+      - OPENAI_SUMMARY_API_KEY
+      - HEARRT_AI_URL
+      - GEMINI_API_KEY
+      - SMTP_HOST
+      - SMTP_PORT
+      - SMTP_SECURE
+      - EMAIL_USER
+      - EMAIL_PASS
+      - CASHFREE_ENV
+      - CASHFREE_APP_ID
+      - CASHFREE_SECRET_KEY
+      - CASHFREE_API_VERSION
+      - CASHFREE_WEBHOOK_SECRET
+      - CASHFREE_RETURN_URL
     ports:
       - "${HOST_PORT:-8000}:8000"
     networks:
