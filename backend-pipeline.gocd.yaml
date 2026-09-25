@@ -15,6 +15,41 @@ pipelines:
       DEPLOY_ENV: "dev"
       GITHUB_USERNAME: "Hearrt-Companion-App"
       BACKEND_VERSION: "1.0.0"
+    # Note: Secure variables must be encrypted by GoCD first. 
+    # You will use the GoCD UI to encrypt your raw values and paste the cipher text here.
+    secure_variables:
+      NODE_ENV: "AES:zgEr/Dc2isOzwiWlleicQA==:+DzIdnCbjZVcyZSCxrKPTg=="
+      JWT_SECRET: "AES:aGLGsZdubxwu9+vv7+qenw==:dywhX2XfO4WV6NPTrqx00vNcUfaWF+hf6hpTkCNeK3++XUB4X7ugwrMoP9MLqCH0sx1HdMVfXAKBkqiOSMjkkp+GbJ9dR5j+dq4P2rjUbLo="
+      REFRESH_TOKEN_SECRET: "AES:+B2SYVe+w3MXCohImzTxKQ==:CJINN64JE4FOE3jvw1RuoLd/Kt9qRI26wbV/C7DvptkqngR1x7MLO27sUhP+Q2pv9Cj1ZIFFG/oME8OhMzklvEFZleEhgVcC1oj7+K0HKu4="
+      ADMIN_JWT_SECRET: "AES:aGIWiugf7vNxDVUD3kyZyQ==:1+VnkbpConXA/rQgw4u0bRk/S1GZBlIz11P4kqnOprXQz+9MZUSIqGjkMKkQnvXJ1h1Ch1HD2N+iOUPbZPLRcP83r1HxdpU7SbCtvhGDM2M="
+      CONTENT_ENCRYPTION_KEY: "AES:lOfiQYp5GRYYbanvLWB+ug==:azlgf0WAR7emIow9ftQGx9/eqtHG8ZbT9N61ZSlj//1CT922sz2CqfB5m4NkX0V4"
+      ACCESS_TOKEN_EXPIRES: "AES:wFyc7iu7uwSP0pq4H5TMOQ==:NvL/jQOGEdM4+lkzUlgM6w=="
+      REFRESH_TOKEN_EXPIRES: "AES:Sjxmubtcyt3VtzP9D/S4Hg==:qxYoA5vMPZyj7n9g/Ix9Hg=="
+      ADMIN_SESSION_EXPIRES: "AES:U159cdI9N/AmeMuzOgt1HA==:+lIfLnrI8gv/jaGHchDtHA=="
+      ADMIN_SESSION_ABSOLUTE_MAX_HOURS: "AES:anMeynOrbWPdx+XLoMQD1w==:JwXae6thRkbFizczn9ajHA=="
+      ADMIN_PENDING_2FA_EXPIRES: "AES:RxbVR81K2M8M9hKomYYZ9g==:UXosBw6gYiHnJn/wPwqisg=="
+      ADMIN_GOOGLE_CLIENT_ID: "AES:1KU10Lo5o1/wAfSkohxPKQ==:EEtBtPuBAX5PX0XisenNOA=="
+      GOOGLE_CLIENT_ID: "AES:plK/K/flDEJAyKUC2iowkQ==:AkCzbPgfLbK05wO2FV+4MA=="
+      DATABASE_URL: "AES:f1VI+yZn4v2AcEZQQZtNxw==:7261dfdUS5jsGGU3SxXxAmsRSJ2zwPtjiLErJt/b8xt92tdZNiNztflmGcXtEI/r+eBSLzEGiGSvDNdICfRViKkb/NwsmnS9+VCG6irWDyk="
+      ADMIN_DEV_LOGIN_ENABLED: "AES:2kqp1NGcimFYCNPBsOfplQ==:c0rSe21p+IP/9daAq5WtpA=="
+      CORS_ORIGINS: "AES:4brtCUQ7zPTJVkv77zK/hA==:BbfLrkS7cqeG5zWWbRDcLrXesdYGHjRqWPS+pLMY5uA="
+      OPENAI_API_KEY: "AES:mV4j8w+X7iodbfQS6PHEBQ==:fEvD8LJneUL1lCeblrbYBYAPjBRn1xH3FstLDmIAanK4kff9wKqPauTOPvUltBaNH7mJ7gAMsfckYvKaLuST7erF1w10E6yLUHaK8UwySpZEGB6tbUr4KeswsDrbsKUqM1LY3MH696pWMb5ISH+/VwgGMrcjzOHeTMcEerB/s4nHjDgw2qCrjEKMzJDpwZ/631e0v/uzvzV9rjKCebGnEWZaOr/3DAuNwV5oK7SLvV4="
+      OPENAI_AVATAR_API_KEY: "AES:jtzdlhDWe4u8UknPJTeZzA==:TeONRenDOdcijzeVTT4jxuDdoj7I1fXVqgoOfMNshQAbHaUzKvPYQHgOdRJFrTPRoN5tA6b5EqQEWWA4UVn/XfK5bvevYaqyI8vitVAIcXog3b8cqbB3WnOiXjyF0JTYYduoUVOX9MpdzhmnFywhglnp3rYS2Qb+VYdMGwD15ohZEsvJIxnVS/nIPDkyGwr90JBBRkjxzAW5iNKX7pRWu0s9JhaEAkZer1oynZfKzLw="
+      OPENAI_SUMMARY_API_KEY: "AES:bjTZWJeQ9PLq41gctnD8/g==:DxkZRLu6cOVxgk5cnlBd0a7OgtThlK1c/ep1k8Ha4MgNQ8bJHJDc4jm4bEWTjtWvBt2afN7hT9TlAP+m6NXUUWZ+xiUdZbJ9oi2hGcIvfeeaYWQFVCe+SsJgVZygFoRYJ+WJoUtb5wq/OwDXRBq4a4OovZNjp99EzRbmAP6mE9gsZHtCtEKEiTzH0biQAELGQaKRoH8sfEVUAgm2Kpojq8KE651EEfwR84YUBJO0N9A="
+      HEARRT_AI_URL: "AES:pL21jm2ht6tmBGaylwbWgQ==:8RQRcmO558yNqQMy+OFxhQeyPr+StpnbYqq7i5dNssLImm28jC8gtgu3UKANxgc401sdEvALUkcAo3+UaFu8mQ=="
+      GEMINI_API_KEY: "AES:GjhcsAWf9NjdhrLwxcwfeA==:+zSH0fJf+d748SOKX9fQo/NJxO8aNDZOd0ZK0QJDqby1Jcu196DQXWUr7tSlKyqX039oLlQWMyDs7eXpxuHAdg=="
+      SMTP_HOST: "AES:HACHv1qXOyWh9DGiClpOJQ==:g+8662sQLfY1GD0m9rJK8E1fYN0KC4Hrw37OqiinPrk="
+      SMTP_PORT: "AES:ixEqiftjIwAVVZTmf5uHKQ==:u/fxQ93XuwRVhktAMG4RVg=="
+      SMTP_SECURE: "AES:fmnlbhJm0UCoqAN1FsVcZA==:e3JC+tFUQxlI9YJ2YK8UyQ=="
+      EMAIL_USER: "AES:XqUQ5wpp6h5+cyt7c2ec+w==:1BQtp+iM8NxQUCO6ux/n1BO0SsBCtNTA1EvQeBQMclg="
+      EMAIL_PASS: "AES:t/Ni23Auj4RIJ+bZ0BFraQ==:+gXBc6a9LVeNkD/8IFKVAw=="
+      CASHFREE_ENV: "AES:KJJgw8Ueatn2SSFz43zFYw==:KPTcYAnu3/DoEwGcL8JiIA=="
+      CASHFREE_APP_ID: "AES:8z54a3L/P/9PGo6OuRcyIg==:3qP3VlGBL3xuP3BH5/8Y7usf4Gj8FhNWX0uq46TTFbKAks2cQWUGZhnOSfysmTex"
+      CASHFREE_SECRET_KEY: "AES:2DmYLn6AV1TeQ9H+mSvzuQ==:mrbmVS8ATZx6niK8mvgUy5LD10mOczI+2kaGzbVKwESy8CY1gk4wok42MSDIUEj6yIVyfkqvr2n7xyInL+NM2w=="
+      CASHFREE_API_VERSION: "AES:HAQHguh1b9iAr+iUnfSJSw==:y+nMYLYXZNMAAre2dnb7tw=="
+      CASHFREE_WEBHOOK_SECRET: "AES:n6zR6WaJ2rbU8JGrREIFsg==:JDQanXMTUycF9ZLL2+AsdA=="
+      CASHFREE_RETURN_URL: "AES:hRCWsllaFc62jc6mCLGMUw==:eZLsZUY8T9NT3AanpLrb6Q=="
+      GHCR_PAT: "AES:+cu44N+AkWm5Zl++gGCnWg==:WegIG2mznnTNmnZ281LKZ4aNbyQBImTqMbjhrsSLj08AA9dDSsiVZWaH7c+CDkSr"
     stages:
       - Dev_Environment:
           jobs:
@@ -66,6 +101,39 @@ pipelines:
       GITHUB_USERNAME: "Hearrt-Companion-App"
       # Notice we DO NOT define BACKEND_VERSION here! 
       # It is passed down automatically from the upstream Dev pipeline.
+    secure_variables:
+      NODE_ENV: "AES:zgEr/Dc2isOzwiWlleicQA==:+DzIdnCbjZVcyZSCxrKPTg=="
+      JWT_SECRET: "AES:aGLGsZdubxwu9+vv7+qenw==:dywhX2XfO4WV6NPTrqx00vNcUfaWF+hf6hpTkCNeK3++XUB4X7ugwrMoP9MLqCH0sx1HdMVfXAKBkqiOSMjkkp+GbJ9dR5j+dq4P2rjUbLo="
+      REFRESH_TOKEN_SECRET: "AES:+B2SYVe+w3MXCohImzTxKQ==:CJINN64JE4FOE3jvw1RuoLd/Kt9qRI26wbV/C7DvptkqngR1x7MLO27sUhP+Q2pv9Cj1ZIFFG/oME8OhMzklvEFZleEhgVcC1oj7+K0HKu4="
+      ADMIN_JWT_SECRET: "AES:aGIWiugf7vNxDVUD3kyZyQ==:1+VnkbpConXA/rQgw4u0bRk/S1GZBlIz11P4kqnOprXQz+9MZUSIqGjkMKkQnvXJ1h1Ch1HD2N+iOUPbZPLRcP83r1HxdpU7SbCtvhGDM2M="
+      CONTENT_ENCRYPTION_KEY: "AES:lOfiQYp5GRYYbanvLWB+ug==:azlgf0WAR7emIow9ftQGx9/eqtHG8ZbT9N61ZSlj//1CT922sz2CqfB5m4NkX0V4"
+      ACCESS_TOKEN_EXPIRES: "AES:wFyc7iu7uwSP0pq4H5TMOQ==:NvL/jQOGEdM4+lkzUlgM6w=="
+      REFRESH_TOKEN_EXPIRES: "AES:Sjxmubtcyt3VtzP9D/S4Hg==:qxYoA5vMPZyj7n9g/Ix9Hg=="
+      ADMIN_SESSION_EXPIRES: "AES:U159cdI9N/AmeMuzOgt1HA==:+lIfLnrI8gv/jaGHchDtHA=="
+      ADMIN_SESSION_ABSOLUTE_MAX_HOURS: "AES:anMeynOrbWPdx+XLoMQD1w==:JwXae6thRkbFizczn9ajHA=="
+      ADMIN_PENDING_2FA_EXPIRES: "AES:RxbVR81K2M8M9hKomYYZ9g==:UXosBw6gYiHnJn/wPwqisg=="
+      ADMIN_GOOGLE_CLIENT_ID: "AES:1KU10Lo5o1/wAfSkohxPKQ==:EEtBtPuBAX5PX0XisenNOA=="
+      GOOGLE_CLIENT_ID: "AES:plK/K/flDEJAyKUC2iowkQ==:AkCzbPgfLbK05wO2FV+4MA=="
+      DATABASE_URL: "AES:f1VI+yZn4v2AcEZQQZtNxw==:7261dfdUS5jsGGU3SxXxAmsRSJ2zwPtjiLErJt/b8xt92tdZNiNztflmGcXtEI/r+eBSLzEGiGSvDNdICfRViKkb/NwsmnS9+VCG6irWDyk="
+      ADMIN_DEV_LOGIN_ENABLED: "AES:2kqp1NGcimFYCNPBsOfplQ==:c0rSe21p+IP/9daAq5WtpA=="
+      CORS_ORIGINS: "AES:4brtCUQ7zPTJVkv77zK/hA==:BbfLrkS7cqeG5zWWbRDcLrXesdYGHjRqWPS+pLMY5uA="
+      OPENAI_API_KEY: "AES:mV4j8w+X7iodbfQS6PHEBQ==:fEvD8LJneUL1lCeblrbYBYAPjBRn1xH3FstLDmIAanK4kff9wKqPauTOPvUltBaNH7mJ7gAMsfckYvKaLuST7erF1w10E6yLUHaK8UwySpZEGB6tbUr4KeswsDrbsKUqM1LY3MH696pWMb5ISH+/VwgGMrcjzOHeTMcEerB/s4nHjDgw2qCrjEKMzJDpwZ/631e0v/uzvzV9rjKCebGnEWZaOr/3DAuNwV5oK7SLvV4="
+      OPENAI_AVATAR_API_KEY: "AES:jtzdlhDWe4u8UknPJTeZzA==:TeONRenDOdcijzeVTT4jxuDdoj7I1fXVqgoOfMNshQAbHaUzKvPYQHgOdRJFrTPRoN5tA6b5EqQEWWA4UVn/XfK5bvevYaqyI8vitVAIcXog3b8cqbB3WnOiXjyF0JTYYduoUVOX9MpdzhmnFywhglnp3rYS2Qb+VYdMGwD15ohZEsvJIxnVS/nIPDkyGwr90JBBRkjxzAW5iNKX7pRWu0s9JhaEAkZer1oynZfKzLw="
+      OPENAI_SUMMARY_API_KEY: "AES:bjTZWJeQ9PLq41gctnD8/g==:DxkZRLu6cOVxgk5cnlBd0a7OgtThlK1c/ep1k8Ha4MgNQ8bJHJDc4jm4bEWTjtWvBt2afN7hT9TlAP+m6NXUUWZ+xiUdZbJ9oi2hGcIvfeeaYWQFVCe+SsJgVZygFoRYJ+WJoUtb5wq/OwDXRBq4a4OovZNjp99EzRbmAP6mE9gsZHtCtEKEiTzH0biQAELGQaKRoH8sfEVUAgm2Kpojq8KE651EEfwR84YUBJO0N9A="
+      HEARRT_AI_URL: "AES:pL21jm2ht6tmBGaylwbWgQ==:8RQRcmO558yNqQMy+OFxhQeyPr+StpnbYqq7i5dNssLImm28jC8gtgu3UKANxgc401sdEvALUkcAo3+UaFu8mQ=="
+      GEMINI_API_KEY: "AES:GjhcsAWf9NjdhrLwxcwfeA==:+zSH0fJf+d748SOKX9fQo/NJxO8aNDZOd0ZK0QJDqby1Jcu196DQXWUr7tSlKyqX039oLlQWMyDs7eXpxuHAdg=="
+      SMTP_HOST: "AES:HACHv1qXOyWh9DGiClpOJQ==:g+8662sQLfY1GD0m9rJK8E1fYN0KC4Hrw37OqiinPrk="
+      SMTP_PORT: "AES:ixEqiftjIwAVVZTmf5uHKQ==:u/fxQ93XuwRVhktAMG4RVg=="
+      SMTP_SECURE: "AES:fmnlbhJm0UCoqAN1FsVcZA==:e3JC+tFUQxlI9YJ2YK8UyQ=="
+      EMAIL_USER: "AES:XqUQ5wpp6h5+cyt7c2ec+w==:1BQtp+iM8NxQUCO6ux/n1BO0SsBCtNTA1EvQeBQMclg="
+      EMAIL_PASS: "AES:t/Ni23Auj4RIJ+bZ0BFraQ==:+gXBc6a9LVeNkD/8IFKVAw=="
+      CASHFREE_ENV: "AES:KJJgw8Ueatn2SSFz43zFYw==:KPTcYAnu3/DoEwGcL8JiIA=="
+      CASHFREE_APP_ID: "AES:8z54a3L/P/9PGo6OuRcyIg==:3qP3VlGBL3xuP3BH5/8Y7usf4Gj8FhNWX0uq46TTFbKAks2cQWUGZhnOSfysmTex"
+      CASHFREE_SECRET_KEY: "AES:2DmYLn6AV1TeQ9H+mSvzuQ==:mrbmVS8ATZx6niK8mvgUy5LD10mOczI+2kaGzbVKwESy8CY1gk4wok42MSDIUEj6yIVyfkqvr2n7xyInL+NM2w=="
+      CASHFREE_API_VERSION: "AES:HAQHguh1b9iAr+iUnfSJSw==:y+nMYLYXZNMAAre2dnb7tw=="
+      CASHFREE_WEBHOOK_SECRET: "AES:n6zR6WaJ2rbU8JGrREIFsg==:JDQanXMTUycF9ZLL2+AsdA=="
+      CASHFREE_RETURN_URL: "AES:hRCWsllaFc62jc6mCLGMUw==:eZLsZUY8T9NT3AanpLrb6Q=="
+      GHCR_PAT: "AES:+cu44N+AkWm5Zl++gGCnWg==:WegIG2mznnTNmnZ281LKZ4aNbyQBImTqMbjhrsSLj08AA9dDSsiVZWaH7c+CDkSr"
     stages:
       - Test_Environment:
           # This sets the trigger to MANUAL approval by the Release Manager
@@ -112,6 +180,8 @@ pipelines:
       PG_PORT: "5432"
       DEPLOY_ENV: "dev"
       POSTGRES_USER: "hearrt_app"
+    secure_variables:
+      POSTGRES_PASSWORD: "AES:B5HsK9e1A6BmuwfjRQjdNw==:lJLXWGBPg1ID6Sn/hCP2s4lnBzMeC3oAER2T5mu4CqI="
     stages:
       - Dev_Database:
           jobs:
@@ -153,6 +223,8 @@ pipelines:
       PG_PORT: "5433"
       DEPLOY_ENV: "test"
       POSTGRES_USER: "hearrt_app"
+    secure_variables:
+      POSTGRES_PASSWORD: "AES:B5HsK9e1A6BmuwfjRQjdNw==:lJLXWGBPg1ID6Sn/hCP2s4lnBzMeC3oAER2T5mu4CqI="
     stages:
       - Test_Database:
           approval:
