@@ -117,3 +117,88 @@ pipelines:
                       - backend-compose.yml
                       - up
                       - -d
+
+  # ==========================================
+  # PIPELINE 3: POSTGRES DEV ENVIRONMENT
+  # ==========================================
+  Deploy_Postgres_Dev:
+    group: Database_Deployments
+    materials:
+      devops_repo:
+        git: https://github.com/amithalder21/hearrt-devops.git
+        branch: main
+    environment_variables:
+      PG_PORT: "5432"
+      DEPLOY_ENV: "dev"
+      POSTGRES_USER: "hearrt_app"
+    secure_variables:
+      POSTGRES_PASSWORD: "AES:B5HsK9e1A6BmuwfjRQjdNw==:lJLXWGBPg1ID6Sn/hCP2s4lnBzMeC3oAER2T5mu4CqI="
+    stages:
+      - Dev_Database:
+          jobs:
+            Deploy_Docker_Containers:
+              tasks:
+                - exec:
+                    command: docker
+                    arguments:
+                      - compose
+                      - -p
+                      - dev
+                      - -f
+                      - postgres-compose.yml
+                      - pull
+                - exec:
+                    command: docker
+                    arguments:
+                      - compose
+                      - -p
+                      - dev
+                      - -f
+                      - postgres-compose.yml
+                      - up
+                      - -d
+
+  # ==========================================
+  # PIPELINE 4: POSTGRES TEST ENVIRONMENT
+  # ==========================================
+  Deploy_Postgres_Test:
+    group: Database_Deployments
+    materials:
+      upstream_pipeline:
+        pipeline: Deploy_Postgres_Dev
+        stage: Dev_Database
+      devops_repo:
+        git: https://github.com/amithalder21/hearrt-devops.git
+        branch: main
+    environment_variables:
+      PG_PORT: "5433"
+      DEPLOY_ENV: "test"
+      POSTGRES_USER: "hearrt_app"
+    secure_variables:
+      POSTGRES_PASSWORD: "AES:B5HsK9e1A6BmuwfjRQjdNw==:lJLXWGBPg1ID6Sn/hCP2s4lnBzMeC3oAER2T5mu4CqI="
+    stages:
+      - Test_Database:
+          approval:
+            type: manual
+          jobs:
+            Deploy_Docker_Containers:
+              tasks:
+                - exec:
+                    command: docker
+                    arguments:
+                      - compose
+                      - -p
+                      - test
+                      - -f
+                      - postgres-compose.yml
+                      - pull
+                - exec:
+                    command: docker
+                    arguments:
+                      - compose
+                      - -p
+                      - test
+                      - -f
+                      - postgres-compose.yml
+                      - up
+                      - -d
